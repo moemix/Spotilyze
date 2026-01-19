@@ -79,6 +79,12 @@ const normalizeEntry = (entry: RawSpotifyEntry, index: number): NormalizedPlay |
     (entry.context as string) ||
     undefined;
 
+  const country =
+    (entry.conn_country as string) ||
+    (entry.country as string) ||
+    (entry.country_code as string) ||
+    undefined;
+
   return {
     id: `${playedAt.toISOString()}-${trackName}-${index}`,
     playedAt,
@@ -87,6 +93,7 @@ const normalizeEntry = (entry: RawSpotifyEntry, index: number): NormalizedPlay |
     artistName,
     albumName,
     trackUri,
+    country,
     platform: entry.platform as string | undefined,
     shuffle: entry.shuffle as boolean | undefined,
     reasonStart: entry.reason_start as string | undefined,
