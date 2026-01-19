@@ -73,12 +73,6 @@ const normalizeEntry = (entry: RawSpotifyEntry, index: number): NormalizedPlay |
     (entry.uri as string) ||
     undefined;
 
-  const country =
-    (entry.conn_country as string) ||
-    (entry.country as string) ||
-    (entry.market as string) ||
-    undefined;
-
   const contextUri =
     (entry.spotify_context_uri as string) ||
     (entry.context_uri as string) ||
@@ -94,12 +88,7 @@ const normalizeEntry = (entry: RawSpotifyEntry, index: number): NormalizedPlay |
     albumName,
     trackUri,
     platform: entry.platform as string | undefined,
-    country,
-    ipAddress: entry.ip_addr as string | undefined,
     shuffle: entry.shuffle as boolean | undefined,
-    skipped: entry.skipped as boolean | undefined,
-    offline: entry.offline as boolean | undefined,
-    incognito: entry.incognito_mode as boolean | undefined,
     reasonStart: entry.reason_start as string | undefined,
     reasonEnd: entry.reason_end as string | undefined,
     contextUri,

@@ -14,7 +14,6 @@ export const applyFilters = (plays: NormalizedPlay[], filters: FilterState): Nor
     if (filters.track && play.trackName !== filters.track) return false;
     if (filters.contextType && play.contextType !== filters.contextType) return false;
     if (filters.platform && play.platform !== filters.platform) return false;
-    if (filters.country && play.country !== filters.country) return false;
     return true;
   });
 };
@@ -86,18 +85,6 @@ export const groupByMonth = (plays: NormalizedPlay[], year: number) => {
   return Array.from({ length: 12 }).map((_, index) =>
     map.get(index) ?? { month: index, msPlayed: 0, plays: 0 }
   );
-};
-
-export const groupByCountry = (plays: NormalizedPlay[]) => {
-  const map = new Map<string, { country: string; msPlayed: number; plays: number }>();
-  for (const play of plays) {
-    const country = play.country ?? 'Unknown';
-    const existing = map.get(country) ?? { country, msPlayed: 0, plays: 0 };
-    existing.msPlayed += play.msPlayed;
-    existing.plays += 1;
-    map.set(country, existing);
-  }
-  return [...map.values()].sort((a, b) => b.msPlayed - a.msPlayed);
 };
 
 export const buildHeatmap = (plays: NormalizedPlay[], metric: 'ms' | 'plays') => {

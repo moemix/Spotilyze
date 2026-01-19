@@ -15,7 +15,6 @@ const FilterPanel = ({ plays, filters, onChange }: FilterPanelProps) => {
   const tracks = useMemo(() => buildOptions(plays, (play) => play.trackName), [plays]);
   const contexts = useMemo(() => buildOptions(plays, (play) => play.contextType), [plays]);
   const platforms = useMemo(() => buildOptions(plays, (play) => play.platform), [plays]);
-  const countries = useMemo(() => buildOptions(plays, (play) => play.country), [plays]);
 
   const update = (patch: Partial<FilterState>) => {
     onChange({ ...filters, ...patch });
@@ -98,21 +97,6 @@ const FilterPanel = ({ plays, filters, onChange }: FilterPanelProps) => {
             {platforms.map((platform) => (
               <option key={platform} value={platform}>
                 {platform}
-              </option>
-            ))}
-          </select>
-        </label>
-        <label className="flex flex-col text-sm gap-2 min-w-[180px]">
-          Country
-          <select
-            value={filters.country ?? ''}
-            onChange={(event) => update({ country: event.target.value || undefined })}
-            className="bg-base-900 border border-base-600 rounded-lg px-3 py-2"
-          >
-            <option value="">All</option>
-            {countries.map((country) => (
-              <option key={country} value={country}>
-                {country}
               </option>
             ))}
           </select>

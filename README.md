@@ -31,12 +31,7 @@ interface NormalizedPlay {
   albumName?: string;
   trackUri?: string;
   platform?: string;
-  country?: string;
-  ipAddress?: string;
   shuffle?: boolean;
-  skipped?: boolean;
-  offline?: boolean;
-  incognito?: boolean;
   reasonStart?: string;
   reasonEnd?: string;
   contextUri?: string;

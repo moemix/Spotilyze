@@ -17,8 +17,6 @@ const sample = [
     master_metadata_album_artist_name: 'Artist B',
     master_metadata_album_album_name: 'Album B',
     spotify_track_uri: 'spotify:track:123',
-    conn_country: 'DE',
-    ip_addr: '127.0.0.1',
   },
 ];
 
@@ -29,8 +27,6 @@ describe('parseSpotifyJson', () => {
     expect(result[0].trackName).toBe('Track A');
     expect(result[1].artistName).toBe('Artist B');
     expect(result[1].trackUri).toBe('spotify:track:123');
-    expect(result[1].country).toBe('DE');
-    expect(result[1].ipAddress).toBe('127.0.0.1');
   });
 
   it('returns empty array for invalid payload', () => {

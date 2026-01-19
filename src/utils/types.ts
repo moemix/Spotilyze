@@ -9,12 +9,7 @@ export interface NormalizedPlay {
   albumName?: string;
   trackUri?: string;
   platform?: string;
-  country?: string;
-  ipAddress?: string;
   shuffle?: boolean;
-  skipped?: boolean;
-  offline?: boolean;
-  incognito?: boolean;
   reasonStart?: string;
   reasonEnd?: string;
   contextUri?: string;
@@ -35,7 +30,6 @@ export interface FilterState {
   track?: string;
   contextType?: string;
   platform?: string;
-  country?: string;
 }
 
 export interface MetricSummary {

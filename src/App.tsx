@@ -2,7 +2,6 @@ import { useMemo, useState } from 'react';
 import FileUpload from './components/FileUpload';
 import FilterPanel from './components/FilterPanel';
 import FunInsights from './components/FunInsights';
-import CountryChart from './components/CountryChart';
 import MetricCard from './components/MetricCard';
 import RankingTable from './components/RankingTable';
 import TimeCharts from './components/TimeCharts';
@@ -143,7 +142,6 @@ const App = () => {
         {hasData ? (
           <section id="time" className="space-y-6">
             <TimeCharts plays={filteredPlays} />
-            <CountryChart plays={filteredPlays} />
           </section>
         ) : null}
 
