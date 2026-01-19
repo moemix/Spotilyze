@@ -5,6 +5,7 @@ import FunInsights from './components/FunInsights';
 import MetricCard from './components/MetricCard';
 import RankingTable from './components/RankingTable';
 import TimeCharts from './components/TimeCharts';
+import LocationInsights from './components/LocationInsights';
 import { useSpotifyData } from './hooks/useSpotifyData';
 import { buildFunInsights, rankBy } from './utils/aggregations';
 import { parseSpotifyFiles } from './utils/parser';
@@ -53,6 +54,9 @@ const App = () => {
             </a>
             <a href="#time" className="hover:text-accent-300 transition">
               Time
+            </a>
+            <a href="#location" className="hover:text-accent-300 transition">
+              Location
             </a>
             <a href="#rankings" className="hover:text-accent-300 transition">
               Artists & Tracks
@@ -146,6 +150,13 @@ const App = () => {
         ) : null}
 
         {hasData ? (
+          <section id="location" className="space-y-4">
+            <h2 className="text-xl font-semibold">Location insights</h2>
+            <LocationInsights plays={filteredPlays} />
+          </section>
+        ) : null}
+
+        {hasData ? (
           <section id="rankings" className="space-y-6">
             <div className="grid lg:grid-cols-2 gap-6">
               <RankingTable title="Top artists" items={topArtists} />
@@ -172,7 +183,8 @@ const App = () => {
             </p>
             <p>
               <strong>Overview</strong> highlights your top metrics and total listening time. <strong>Time</strong>{' '}
-              reveals long-term trends, seasonal patterns, and your weekday/hour heatmap. <strong>Artists & Tracks</strong>{' '}
+              reveals long-term trends, seasonal patterns, and your weekday/hour heatmap. <strong>Location</strong>{' '}
+              summarizes where your listening happens and how it shifts over time. <strong>Artists & Tracks</strong>{' '}
               gives sortable leaderboards. <strong>Fun insights</strong> surfaces shareable stats about your listening
               personality.
             </p>

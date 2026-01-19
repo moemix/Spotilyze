@@ -87,6 +87,18 @@ export const groupByMonth = (plays: NormalizedPlay[], year: number) => {
   );
 };
 
+export const groupByCountry = (plays: NormalizedPlay[]) => {
+  const map = new Map<string, { country: string; msPlayed: number; plays: number }>();
+  for (const play of plays) {
+    const country = play.country ?? 'Unknown';
+    const existing = map.get(country) ?? { country, msPlayed: 0, plays: 0 };
+    existing.msPlayed += play.msPlayed;
+    existing.plays += 1;
+    map.set(country, existing);
+  }
+  return [...map.values()].sort((a, b) => b.msPlayed - a.msPlayed);
+};
+
 export const buildHeatmap = (plays: NormalizedPlay[], metric: 'ms' | 'plays') => {
   const grid = Array.from({ length: 7 }, () => Array.from({ length: 24 }, () => 0));
   for (const play of plays) {

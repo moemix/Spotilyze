@@ -8,6 +8,7 @@ export interface NormalizedPlay {
   artistName: string;
   albumName?: string;
   trackUri?: string;
+  country?: string;
   platform?: string;
   shuffle?: boolean;
   reasonStart?: string;
